@@ -1,56 +1,98 @@
-# ai-assessment-question-controller
-AI Assessment Question Structure Controller - Internship Task
-Description
+AI Assessment Question Structure Controller
+Project Description
 
-This module manages the structure and validation of AI assessment questions used in an interview monitoring system.
+The AI Assessment Question Structure Controller is a backend module developed for an AI Interview Monitoring System.
+The purpose of this project is to validate and manage the structure of assessment questions before they are stored or used in the system.
 
-It ensures that questions follow a defined format before being stored or used in assessments.
+This module ensures that every question follows a standard format so that the AI system can process the questions correctly during assessments.
 
-Project Features
+Features
 
-• Question structure validation
-• AI assessment question controller
-• JSON based question handling
-• Input validation rules
-• Sample output generation
+Question structure validation
+
+JSON-based question handling
+
+Input validation rules
+
+Controller for processing questions
+
+Sample output generation
+
+Technologies Used
+
+Python
+
+Flask
+
+JSON
 
 Project Structure
-controllers/
-Handles question request processing.
+ai-assessment-question-controller
+│
+├── controllers
+│   └── assessment_controller.py
+│
+├── utils
+│   └── validator.py
+│
+├── data
+│   └── questions.json
+│
+├── reports
+│   └── sample_output.json
+│
+├── app.py
+│
+└── requirements.txt
+How the System Works
 
-data/
-Contains the question bank dataset.
+The user sends question data in JSON format to the system.
 
-utils/
-Contains validation logic for question structure.
+The assessment_controller.py receives the request.
 
-reports/
-Stores sample output results.
+The controller sends the data to validator.py.
 
-app.py
-Main Flask application to run the system.
-How It Works
+The validator checks whether the question follows the required structure.
 
-1️⃣ User sends question data to the system
+If the validation is successful, the question is accepted.
 
-2️⃣ assessment_controller.py processes the request
+The system returns the result as JSON output.
 
-3️⃣ validator.py checks question structure rules
+Example Input
+{
+  "question": "What is Artificial Intelligence?",
+  "options": [
+    "Machine learning",
+    "Artificial Intelligence",
+    "Database",
+    "Operating system"
+  ],
+  "answer": "Artificial Intelligence",
+  "difficulty": "Easy"
+}
+Example Output
+{
+  "status": "success",
+  "message": "Question validated successfully"
+}
+How to Run the Project
 
-4️⃣ Valid questions are accepted
-
-5️⃣ Output stored or returned as JSON
-
-Run the Project
-
-Install dependencies:
+Install required packages:
 
 pip install -r requirements.txt
 
-Run server:
+Run the application:
 
 python app.py
+Server
 
-Server runs on:
+After running the project, the Flask server will start at:
 
 http://127.0.0.1:5000
+
+You can test the API using Postman or any API testing tool.
+
+Internship Contribution
+
+In this internship task, the main objective was to develop a controller that validates the structure of AI assessment questions.
+The module checks whether the questions follow the required format and ensures that only valid questions are used in the AI interview system.
