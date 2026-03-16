@@ -1,98 +1,142 @@
-AI Assessment Question Structure Controller
-Project Description
+# AI Assessment Question Structure Controller
 
-The AI Assessment Question Structure Controller is a backend module developed for an AI Interview Monitoring System.
-The purpose of this project is to validate and manage the structure of assessment questions before they are stored or used in the system.
+## Project Overview
 
-This module ensures that every question follows a standard format so that the AI system can process the questions correctly during assessments.
+The **AI Assessment Question Structure Controller** is a core module of the **AI Assessment Monitoring System**.
+It ensures that every AI assessment follows a **fixed and validated question structure** before it is delivered to candidates.
 
-Features
+This module guarantees fairness, consistency, and proper question sequencing across all domains such as **AI/ML, Web Development, Data Science**, and others.
 
-Question structure validation
+---
 
-JSON-based question handling
+## Objective
 
-Input validation rules
+The goal of this module is to enforce a **standard structure for AI assessments** so that:
 
-Controller for processing questions
+* Every candidate receives **exactly 10 questions**
+* The **question format remains consistent**
+* Difficulty levels increase gradually
+* Duplicate or missing questions are prevented
 
-Sample output generation
+This ensures a **fair and structured evaluation process**.
 
-Technologies Used
+---
 
-Python
+## Assessment Rules
 
-Flask
+The controller validates the following rules:
 
-JSON
+1. Each assessment must contain **exactly 10 questions**
 
-Project Structure
-ai-assessment-question-controller
+2. The **first question must always be**:
+
+   **"Please introduce yourself."**
+
+3. The remaining **9 questions are domain-specific**
+
+4. Questions must follow **increasing difficulty levels**
+
+5. Duplicate questions are **not allowed**
+
+6. Missing questions are **not allowed**
+
+If any of these rules are violated, the assessment will be **rejected by the controller**.
+
+---
+
+## How the System Works
+
+1. The system receives a list of questions.
+2. The controller validates the question structure.
+3. It checks:
+
+   * Total number of questions
+   * First question rule
+   * Duplicate questions
+   * Difficulty order
+4. If validation passes, the assessment is approved.
+5. If validation fails, an error message is returned.
+
+---
+
+## Project Structure
+
+```
+ai-assessment-monitoring-controller
 │
-├── controllers
+├── controller
 │   └── assessment_controller.py
 │
-├── utils
-│   └── validator.py
+├── tests
+│   └── test_controller.py
 │
-├── data
-│   └── questions.json
-│
-├── reports
-│   └── sample_output.json
-│
-├── app.py
-│
-└── requirements.txt
-How the System Works
+└── README.md
+```
 
-The user sends question data in JSON format to the system.
+### controller/
 
-The assessment_controller.py receives the request.
+Contains the main validation logic for the AI assessment question structure.
 
-The controller sends the data to validator.py.
+### tests/
 
-The validator checks whether the question follows the required structure.
+Contains unit tests used to verify that the controller works correctly.
 
-If the validation is successful, the question is accepted.
+---
 
-The system returns the result as JSON output.
+## Running the Project
 
-Example Input
-{
-  "question": "What is Artificial Intelligence?",
-  "options": [
-    "Machine learning",
-    "Artificial Intelligence",
-    "Database",
-    "Operating system"
-  ],
-  "answer": "Artificial Intelligence",
-  "difficulty": "Easy"
-}
-Example Output
-{
-  "status": "success",
-  "message": "Question validated successfully"
-}
-How to Run the Project
+Make sure **Python 3** is installed.
 
-Install required packages:
+### Step 1: Open Terminal
 
-pip install -r requirements.txt
+Navigate to the project folder.
 
-Run the application:
+### Step 2: Run Unit Tests
 
-python app.py
-Server
+```bash
+python -m unittest discover tests
+```
 
-After running the project, the Flask server will start at:
+---
 
-http://127.0.0.1:5000
+## Expected Output
 
-You can test the API using Postman or any API testing tool.
+If all validations work correctly, you will see:
 
-Internship Contribution
+```
+.....
+----------------------------------------------------------------------
+Ran 5 tests
 
-In this internship task, the main objective was to develop a controller that validates the structure of AI assessment questions.
-The module checks whether the questions follow the required format and ensures that only valid questions are used in the AI interview system.
+OK
+```
+
+This confirms that the controller correctly validates the assessment structure.
+
+---
+
+## Technologies Used
+
+* Python 3
+* JSON-style data structures
+* Python `unittest` framework
+
+---
+
+## Use Case
+
+This controller can be integrated into:
+
+* AI Interview Platforms
+* Online Technical Assessments
+* Automated Recruitment Systems
+* AI Monitoring & Evaluation Systems
+
+---
+
+## Author
+
+**Chithranjan Agapu**
+
+AI Assessment Monitoring System
+Internship Project – Assessment Question Structure Controller
